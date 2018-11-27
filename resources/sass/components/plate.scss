@@ -1,0 +1,37 @@
+.plate {
+    @apply w-full bg-white;
+    th, td {
+        @apply p-2 border text-sm border-grey text-center;
+    }
+
+    th {
+        @apply bg-grey-lighter;
+    }
+    td {
+        min-width: 65px;
+    }
+    tr:first-child th {
+        border-top: none;
+        border-bottom: none;
+    }
+    tr:nth-child(2) {
+        td, th {
+            border-top: none;
+        }
+    }
+    th:first-child {
+        border-left: none;
+        border-right: none;
+    }
+    td:nth-child(2), th:nth-child(2) {
+        border-left: none;
+    }
+    td:last-child, th:last-child {
+        border-right: none;
+    }
+    tr:last-child {
+        td, th {
+            border-bottom: none;
+        }
+    }
+}
