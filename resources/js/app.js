@@ -38,9 +38,10 @@ let routes = [
         props: true
     },
     {
-        path: '/scanner',
+        path: '/:view/:plate/scanner',
         name: 'scanner',
-        component: require('./pages/Scanner')
+        component: require('./pages/Scanner'),
+        props: true
     }
 ];
 

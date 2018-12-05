@@ -29,10 +29,18 @@ class Sample extends Model
 
         $rows = config('plate.rows');
         $columns = config('plate.columns');
-        $plate = (int) (($this->position - 1) / ($rows * $columns)) + 1;
+
+        $plate = $this->plate;
         $position = ($this->position - 1) - ($rows * $columns) * ($plate - 1);
         $row = range('A', 'Z')[((int) ($position / $columns))];
         $column = ($position % $columns) + 1;
         return sprintf("P%'.03d%s%'.02d", $plate, $row, $column);
+    }
+
+    public function getPlateAttribute()
+    {
+        $rows = config('plate.rows');
+        $columns = config('plate.columns');
+        return (int) (($this->position - 1) / ($rows * $columns)) + 1;
     }
 }

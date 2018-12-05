@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Sample;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -20,7 +21,8 @@ class AuthController
             'email' => 'admin@admin.ch',
             'password' => $request->password
         ])) {
-            return redirect()->intended('/admin');
+            $sample = Sample::orderBy('position', 'desc')->first();
+            return redirect()->intended('/admin/table/' . ($sample ? $sample->plate : 1));
         }
         throw ValidationException::withMessages([
             'password' => [trans('auth.failed')],
