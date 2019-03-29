@@ -28,8 +28,8 @@ class SampleController
         }
         $paginator->setCollection($samples);
         return array_merge([
-            'rows' => config('plate.rows'),
-            'columns' => config('plate.columns')
+            'rows' => (int) config('plate.rows'),
+            'columns' => (int) config('plate.columns')
         ], $paginator->toArray());
     }
 
